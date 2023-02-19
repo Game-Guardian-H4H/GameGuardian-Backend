@@ -139,6 +139,16 @@ app.post(`${END_POINT}/users/:userId/maxTimeAllowed`, async (req, res) => {
   }
 });
 
+app.get(`${END_POINT}/server/healthCheck`, async (req, res) => {
+  try {
+    // Check the health status of the Postgres connection
+    res.status(200).json({ health_status: "green" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ health_status: "red" });
+  }
+});
+
 // Start the Express app
 app.listen(3000, () => {
   console.log("App listening on port 3000");
