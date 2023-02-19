@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify #added to top of file
-from flask_cors import CORS, cross_origin
 
 from Create_user import insert_user
 from GetAllUsers import get_All_Users
@@ -8,21 +7,23 @@ from GetPauseState import get_Pause_State
 from GetUserByID import get_user_by_id
 from UpdateUser import update_user, delete_user
 from PutPlayedTime import put_Played_Time
-
+from setPauseState import set_Pause_State
 
 app = Flask(__name__)
 
 @app.route('/')
-@cross_origin
 def hello_world():
     return 'Hello, World!'
 
-@app.route('/api/pausegame/<user_id>', methods=['GET'])
-def pausegame(user_id):
+@app.route('/api/getPauseState/<user_id>', methods=['GET'])
+def getPauseState(user_id):
     return jsonify(get_Pause_State())
 
+@app.route('/api/setPauseState/<user_id, state>', methods=['POST'])
+def setPauseState(user_id):
+    return jsonify(set_Pause_State())
+
 app = Flask(__name__)
-#CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/api/users', methods=['GET'])
 def api_get_users():
