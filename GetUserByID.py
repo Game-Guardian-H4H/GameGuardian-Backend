@@ -17,7 +17,8 @@ def get_user_by_id(username):
             user["username"] = row["username"]
             user["maxTimeAllowed"] = row["maxTimeAllowed"]
             user["playedTime"] = row["playedTime"]
+            user["isPaused"] = row["isPaused"]
     except:
-        user = {}
+        return "Failure", 500
 
     return user

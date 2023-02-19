@@ -7,9 +7,10 @@ def insert_user(user):
     try:
         conn = connect_to_db()
         cur = conn.cursor()
+
         # create_db_table()
         check_user = get_user_by_id(user["username"])
-        if check_user is None:
+        if check_user is not None:
             return {}
         else:
             cur.execute("INSERT INTO users (username, maxTimeAllowed) "

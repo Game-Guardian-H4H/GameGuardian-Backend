@@ -13,9 +13,9 @@ def create_db_table():
         conn.execute('''
             CREATE TABLE users (
                 username TEXT PRIMARY KEY NOT NULL,
-                maxTimeAllowed TEXT NOT NULL,
-                isPaused Boolean,
-                playedTime TEXT 
+                maxTimeAllowed TEXT default 0,
+                isPaused Boolean default false,
+                playedTime TEXT default 0
             );
         ''')
 

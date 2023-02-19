@@ -14,12 +14,11 @@ def get_all_users():
 
         # convert row objects to dictionary
         for i in rows:
-            user = {"username": i["username"], "playedTime": i["playedTime"], "maxTimeAllowed": i["maxTimeAllowed"]}
+            user = {"username": i["username"], "playedTime": i["playedTime"], "maxTimeAllowed": i["maxTimeAllowed"],
+                    "isPaused": i["isPaused"]}
             users.append(user)
 
     except:
         users = []
 
     return users
-
-
