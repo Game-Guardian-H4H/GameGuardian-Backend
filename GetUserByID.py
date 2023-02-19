@@ -9,7 +9,7 @@ def get_user_by_id(username):
         conn = connect_to_db()
         conn.row_factory = sqlite3.Row
         cur = conn.cursor()
-        cur.execute("SELECT * FROM users WHERE user_id = ?", (username,))
+        cur.execute("SELECT * FROM users WHERE username = ?", (username,))
         row = cur.fetchone()
 
         # convert row object to dictionary
