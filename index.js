@@ -1,19 +1,14 @@
-// Import required modules
 const express = require("express");
 const { Op } = require("sequelize");
-const { User } = require("./models"); // assuming User model is defined in models.js
+const { User } = require("./models");
 
-// Create an Express app
 const app = express();
 const END_POINT = "/api/v1";
 
-// Define an endpoint to get all users
 app.get(`${END_POINT}/users`, async (req, res) => {
   try {
-    // Query the "user" table for all users
     const users = await User.findAll();
 
-    // Send the users as a JSON response
     res.json(users);
   } catch (error) {
     console.error(error);

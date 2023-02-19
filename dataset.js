@@ -19,7 +19,6 @@ const User = sequelize.define("user", {
   },
 });
 
-// Define a function to create and save a user to the database
 async function createUser(userId, isPaused, maxTimeAllowed) {
   const user = await User.create({
     userId: userId,
@@ -30,7 +29,6 @@ async function createUser(userId, isPaused, maxTimeAllowed) {
   console.log(`Created user with id ${user.userId}`);
 }
 
-// Create an array of users to add to the database
 const users = [
   { userId: "user1", isPaused: false, maxTimeAllowed: 20 },
   { userId: "user2", isPaused: false, maxTimeAllowed: 20 },
@@ -44,7 +42,6 @@ const users = [
   { userId: "user10", isPaused: true, maxTimeAllowed: 30 },
 ];
 
-// Add each user to the database in a loop
 async function addUsers() {
   for (const user of users) {
     await createUser(user.userId, user.isPaused, user.maxTimeAllowed);

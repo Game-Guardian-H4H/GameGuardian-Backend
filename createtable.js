@@ -1,12 +1,10 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
-// Initialize Sequelize with your database connection details
 const sequelize = new Sequelize("postgres", "postgres", "root", {
   host: "localhost",
   dialect: "postgres",
 });
 
-// Define the User model
 const User = sequelize.define(
   "user",
   {

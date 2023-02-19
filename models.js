@@ -1,6 +1,5 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
-// Define a new Sequelize instance with a connection to a database
 const sequelize = new Sequelize("postgres", "postgres", "root", {
   host: "localhost",
   dialect: "postgres",
