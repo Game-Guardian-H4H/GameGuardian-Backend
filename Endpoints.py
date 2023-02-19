@@ -5,6 +5,7 @@ from Create_user import insert_user
 from GetAllUsers import get_All_Users
 from GetUserByID import get_user_by_id
 from UpdateUser import update_user, delete_user
+from GetAllowedTime import get_Allowed_Time
 
 app = Flask(__name__)
 #CORS(app, resources={r"/*": {"origins": "*"}})
@@ -30,6 +31,10 @@ def api_update_user():
 @app.route('/api/users/delete/<user_id>',  methods = ['DELETE'])
 def api_delete_user(user_id):
     return jsonify(delete_user(user_id))
+
+@app.route('/api/users/getAllowedTime/<user_id>',  methods = ['GET'])
+def api_user_allowed_time(user_id):
+    return jsonify(get_Allowed_Time(user_id))
 
 if __name__ == "__main__":
     #app.debug = True

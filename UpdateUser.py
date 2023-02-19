@@ -7,10 +7,10 @@ def update_user(user):
     try:
         conn = connect_to_db()
         cur = conn.cursor()
-        cur.execute("UPDATE users SET name = ?, email = ?, phone = ?, address = ?, country = ? WHERE user_id =?",
+        cur.execute("UPDATE users SET name = ?, email = ?, phone = ?, address = ?, country = ?, maxTimeAllowed = ?, WHERE user_id =?",
                      (user["name"], user["email"], user["phone"],
                      user["address"], user["country"],
-                     user["user_id"],))
+                     user["user_id"], user["maxTimeAllowed"]))
         conn.commit()
         #return the user
         updated_user = get_user_by_id(user["user_id"])

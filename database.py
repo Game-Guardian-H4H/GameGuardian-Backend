@@ -15,7 +15,8 @@ def create_db_table():
                 email TEXT NOT NULL,
                 phone TEXT NOT NULL,
                 address TEXT NOT NULL,
-                country TEXT NOT NULL
+                country TEXT NOT NULL,
+                maxTimeAllowed TEXT NOT NULL
             );
         ''')
 

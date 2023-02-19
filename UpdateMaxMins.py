@@ -1,6 +1,12 @@
+from flask import Flask           # import flask
+import sqlite3
+
+app = Flask(__name__)
+
 in_memory_datastore = {
     "Max_mins": {"max": "60"}
 }
+
 
 
 @app.route('/gameSafe/maxMins', methods=['GET'])

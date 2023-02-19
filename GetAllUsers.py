@@ -10,7 +10,6 @@ def get_All_Users():
         conn.row_factory = sqlite3.Row
         cur = conn.cursor()
         cur.execute("SELECT * FROM users")
-        print("hi")
         rows = cur.fetchall()
 
         # convert row objects to dictionary
@@ -22,6 +21,7 @@ def get_All_Users():
             user["phone"] = i["phone"]
             user["address"] = i["address"]
             user["country"] = i["country"]
+            user["maxTimeAllowed"] = i["maxTimeAllowed"]
             users.append(user)
 
     except:
