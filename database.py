@@ -1,16 +1,18 @@
 #!/usr/bin/python
 import sqlite3
 
+
 def connect_to_db():
     conn = sqlite3.connect('database.db')
     return conn
+
 
 def create_db_table():
     try:
         conn = connect_to_db()
         conn.execute('''
             CREATE TABLE users (
-                username INTEGER PRIMARY KEY NOT NULL,
+                username TEXT PRIMARY KEY NOT NULL,
                 name TEXT NOT NULL,
                 password TEXT NOT NULL,
                 email TEXT NOT NULL,
@@ -18,8 +20,8 @@ def create_db_table():
                 address TEXT NOT NULL,
                 country TEXT NOT NULL,
                 maxTimeAllowed TEXT NOT NULL,
-                isPaused Boolean NOT NULL,
-                playedTime TEXT NOT NULL
+                isPaused Boolean,
+                playedTime TEXT 
             );
         ''')
 

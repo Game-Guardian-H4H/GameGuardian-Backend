@@ -10,7 +10,7 @@ def put_played_time():
         conn.row_factory = sqlite3.Row
         cur = conn.cursor()
         cur.execute("UPDATE users SET playedTime = ?, WHERE user_id =?",
-                    (user["played_time"], user["username"]))
+                    (user['played_time'], user['username']))
         row = cur.fetchone()
 
         # convert row object to dictionary
