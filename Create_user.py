@@ -7,7 +7,7 @@ def insert_user(user):
     try:
         conn = connect_to_db()
         cur = conn.cursor()
-        #create_db_table();
+        # create_db_table();
         cur.execute("INSERT INTO users (name, email, phone, address,country) VALUES (?, ?, ?, ?, ?)", (user['name'],
                     user['email'], user['phone'], user['address'],user['country']))
         conn.commit()
