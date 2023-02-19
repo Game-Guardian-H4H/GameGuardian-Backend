@@ -10,18 +10,19 @@ def get_user_by_id(username):
         conn.row_factory = sqlite3.Row
         cur = conn.cursor()
         cur.execute("SELECT * FROM users WHERE username = ?", (username,))
-        row = cur.fetchone()
+        if cur.rowcount is not 0:
+            row = cur.fetchone()
 
-        # convert row object to dictionary
-        user["username"] = row["username"]
-        user["name"] = row["name"]
-        user["email"] = row["email"]
-        user["phone"] = row["phone"]
-        user["address"] = row["address"]
-        user["country"] = row["country"]
-        user["maxTimeAllowed"] = row["maxTimeAllowed"]
-        user["isPaused"] = row["isPaused"]
-        user["playedTime"] = row["playedTime"]
+            # convert row object to dictionary
+            user["username"] = row["username"]
+            user["name"] = row["name"]
+            user["email"] = row["email"]
+            user["phone"] = row["phone"]
+            user["address"] = row["address"]
+            user["country"] = row["country"]
+            user["maxTimeAllowed"] = row["maxTimeAllowed"]
+            user["isPaused"] = row["isPaused"]
+            user["playedTime"] = row["playedTime"]
     except:
         user = {}
 
