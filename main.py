@@ -1,13 +1,13 @@
 from flask import Flask, request, jsonify
 
 from Create_user import insert_user
-from GetAllUsers import get_All_Users
-from GetAllowedTime import get_Allowed_Time
-from GetPauseState import get_Pause_State
+from GetAllUsers import get_all_users
+from GetAllowedTime import get_allowed_time
+from GetPauseState import get_pause_state
 from GetUserByID import get_user_by_id
 from UpdateUser import update_user, delete_user
-from PutPlayedTime import put_Played_Time
-from setPauseState import set_Pause_State
+from PutPlayedTime import put_played_time
+from setPauseState import set_pause_state
 
 app = Flask(__name__)
 
@@ -19,13 +19,13 @@ def hello_world():
 
 @app.route('/api/getPauseState/<username>', methods=['GET'])
 def get_pause_state(username):
-    return jsonify(get_Pause_State(username))
+    return jsonify(get_pause_state(username))
 
 
 @app.route('/api/setPauseState', methods=['POST'])
 def set_pause_state():
     user = request.get_json()
-    return jsonify(set_Pause_State(user))
+    return jsonify(set_pause_state(user))
 
 
 app = Flask(__name__)
@@ -33,7 +33,7 @@ app = Flask(__name__)
 
 @app.route('/api/users', methods=['GET'])
 def api_get_users():
-    return jsonify(get_All_Users())
+    return jsonify(get_all_users())
 
 
 @app.route('/api/users/<username>', methods=['GET'])
@@ -60,13 +60,13 @@ def api_delete_user(username):
 
 @app.route('/api/users/getAllowedTime/<username>', methods=['GET'])
 def api_user_allowed_time(username):
-    return jsonify(get_Allowed_Time(username))
+    return jsonify(get_allowed_time(username))
 
 
 @app.route('/api/users/putPlayedTime', methods=['PUT'])
 def api_user_played_time():
     user = request.get_json()
-    return jsonify(put_Played_Time(user))
+    return jsonify(put_played_time(user))
 
 
 if __name__ == "__main__":
