@@ -2,6 +2,7 @@ import sqlite3
 
 from database import connect_to_db
 
+
 def put_played_time():
     user = {}
     try:
