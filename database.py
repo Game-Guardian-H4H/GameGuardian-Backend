@@ -13,12 +13,6 @@ def create_db_table():
         conn.execute('''
             CREATE TABLE users (
                 username TEXT PRIMARY KEY NOT NULL,
-                name TEXT NOT NULL,
-                password TEXT NOT NULL,
-                email TEXT NOT NULL,
-                phone TEXT NOT NULL,
-                address TEXT NOT NULL,
-                country TEXT NOT NULL,
                 maxTimeAllowed TEXT NOT NULL,
                 isPaused Boolean,
                 playedTime TEXT 

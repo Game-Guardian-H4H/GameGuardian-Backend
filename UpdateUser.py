@@ -8,11 +8,9 @@ def update_user(user):
         conn = connect_to_db()
         cur = conn.cursor()
         cur.execute(
-            "UPDATE users SET name = ?, password = ?, email = ?, phone = ?, address = ?, country = ?, maxTimeAllowed "
+            "UPDATE users SET maxTimeAllowed "
             "= ?, ""playedTime = ?, WHERE username =?",
-            (user["name"], user["password"], user["email"], user["phone"],
-             user["address"], user["country"],
-             user["username"], user["maxTimeAllowed"], user["isPaused"], user["playedTime"]))
+            (user["maxTimeAllowed"], user["playedTime"], user["username"]))
         conn.commit()
         # return the user
         updated_user = get_user_by_id(user["username"])

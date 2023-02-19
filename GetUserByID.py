@@ -15,13 +15,7 @@ def get_user_by_id(username):
 
             # convert row object to dictionary
             user["username"] = row["username"]
-            user["name"] = row["name"]
-            user["email"] = row["email"]
-            user["phone"] = row["phone"]
-            user["address"] = row["address"]
-            user["country"] = row["country"]
             user["maxTimeAllowed"] = row["maxTimeAllowed"]
-            user["isPaused"] = row["isPaused"]
             user["playedTime"] = row["playedTime"]
     except:
         user = {}

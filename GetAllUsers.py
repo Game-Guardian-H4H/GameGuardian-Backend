@@ -14,8 +14,7 @@ def get_all_users():
 
         # convert row objects to dictionary
         for i in rows:
-            user = {"username": i["username"], "name": i["name"], "email": i["email"], "phone": i["phone"],
-                    "address": i["address"], "country": i["country"], "maxTimeAllowed": i["maxTimeAllowed"]}
+            user = {"username": i["username"], "playedTime": i["playedTime"], "maxTimeAllowed": i["maxTimeAllowed"]}
             users.append(user)
 
     except:
