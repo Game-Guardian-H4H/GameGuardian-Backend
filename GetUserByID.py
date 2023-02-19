@@ -8,7 +8,7 @@ def get_user_by_id(user_id):
         conn = connect_to_db()
         conn.row_factory = sqlite3.Row
         cur = conn.cursor()
-        cur.execute("SELECT * FROM users WHERE user_id = ?",(user_id,))
+        cur.execute("SELECT * FROM users WHERE user_id = ?", (user_id,))
         row = cur.fetchone()
 
         # convert row object to dictionary
@@ -19,6 +19,8 @@ def get_user_by_id(user_id):
         user["address"] = row["address"]
         user["country"] = row["country"]
         user["maxTimeAllowed"] = row["maxTimeAllowed"]
+        user["isPaused"] = row["isPaused"]
+        user["playedTime"] = row["playedTime"]
     except:
         user = {}
 

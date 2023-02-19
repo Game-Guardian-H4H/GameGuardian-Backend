@@ -16,7 +16,9 @@ def create_db_table():
                 phone TEXT NOT NULL,
                 address TEXT NOT NULL,
                 country TEXT NOT NULL,
-                maxTimeAllowed TEXT NOT NULL
+                maxTimeAllowed TEXT NOT NULL,
+                isPaused Boolean NOT NULL,
+                playedTime TEXT NOT NULL
             );
         ''')
 
