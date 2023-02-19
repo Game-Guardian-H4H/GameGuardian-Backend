@@ -7,14 +7,15 @@ def update_user(user):
     try:
         conn = connect_to_db()
         cur = conn.cursor()
-        cur.execute("UPDATE users SET name = ?, email = ?, phone = ?, address = ?, country = ?, maxTimeAllowed = ?, "
-                    "playedTime = ?, WHERE user_id =?",
-                     (user["name"], user["email"], user["phone"],
-                     user["address"], user["country"],
-                     user["user_id"], user["maxTimeAllowed"], user["isPaused"], user["playedTime"]))
+        cur.execute(
+            "UPDATE users SET name = ?, password = ?, email = ?, phone = ?, address = ?, country = ?, maxTimeAllowed "
+            "= ?, ""playedTime = ?, WHERE username =?",
+            (user["name"], user["password"], user["email"], user["phone"],
+             user["address"], user["country"],
+             user["username"], user["maxTimeAllowed"], user["isPaused"], user["playedTime"]))
         conn.commit()
-        #return the user
-        updated_user = get_user_by_id(user["user_id"])
+        # return the user
+        updated_user = get_user_by_id(user["username"])
 
     except:
         conn.rollback()
@@ -25,11 +26,11 @@ def update_user(user):
     return updated_user
 
 
-def delete_user(user_id):
+def delete_user(username):
     message = {}
     try:
         conn = connect_to_db()
-        conn.execute("DELETE from users WHERE user_id = ?", (user_id,))
+        conn.execute("DELETE from users WHERE username = ?", (username,))
         conn.commit()
         message["status"] = "User deleted successfully"
     except:

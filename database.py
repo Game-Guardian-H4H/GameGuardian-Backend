@@ -10,8 +10,9 @@ def create_db_table():
         conn = connect_to_db()
         conn.execute('''
             CREATE TABLE users (
-                user_id INTEGER PRIMARY KEY NOT NULL,
+                username INTEGER PRIMARY KEY NOT NULL,
                 name TEXT NOT NULL,
+                password TEXT NOT NULL,
                 email TEXT NOT NULL,
                 phone TEXT NOT NULL,
                 address TEXT NOT NULL,
@@ -22,9 +23,19 @@ def create_db_table():
             );
         ''')
 
+        conn.execute('''
+                    CREATE TABLE games (
+                        username TEXT NOT NULL,
+                        game_name TEXT NOT NULL,
+                        game_description,
+                        icon TEXT NOT NULL,
+                        FOREIGN KEY(username) REFERENCES users(username) 
+                    );
+                ''')
+
         conn.commit()
-        print("User table created successfully")
+        print("Games table created successfully")
     except:
-        print("User table creation failed - Maybe table")
+        print("Games table creation failed")
     finally:
         conn.close()

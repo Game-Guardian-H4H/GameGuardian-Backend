@@ -8,8 +8,12 @@ def insert_user(user):
         conn = connect_to_db()
         cur = conn.cursor()
         # create_db_table();
-        cur.execute("INSERT INTO users (name, email, phone, address,country) VALUES (?, ?, ?, ?, ?)", (user['name'],
-                    user['email'], user['phone'], user['address'],user['country']))
+        check_user = get_user_by_id(user["username"])
+        if check_user is None:
+            return {};
+
+        cur.execute("INSERT INTO users (username, password, email, phone, address,country) VALUES (?, ?, ?, ?, ?, ?)",
+                    (user['username'], user['password'], user['email'], user['phone'], user['address'], user['country']))
         conn.commit()
         inserted_user = get_user_by_id(cur.lastrowid)
     except:
